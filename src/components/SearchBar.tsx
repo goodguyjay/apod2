@@ -19,9 +19,9 @@ export default function SearchBar({onDateChange}: Props) {
                 value={date}
                 max={new Date().toISOString().split("T")[0]}
                 onChange={e => setDate(e.target.value)}
-                className="form-control"
+                className="form-control bg-dark text-light border-secondary"
             />
-            <button type="submit" className="btn btn-primary" disabled={!date}>
+            <button type="submit" className="btn btn-outline-light" disabled={!date}>
                 Buscar
             </button>
         </form>

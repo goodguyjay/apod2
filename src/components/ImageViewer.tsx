@@ -8,7 +8,12 @@ type Props = {
 export default function ImageViewer({date, language}: Props) {
     const {data, translation, loading, error} = useApodWithTranslation(date);
 
-    if (loading) return <div className="text-light fs-4">Carregando...</div>;
+    if (loading)
+        return (
+            <div className="my-5 d-flex justify-content-center">
+                <span className="star-loader" />
+            </div>
+        );
     if (error) return <div className="text-danger">{error}</div>;
     if (!data) return null;
 
@@ -34,7 +39,7 @@ export default function ImageViewer({date, language}: Props) {
                     />
             )}
             <p className="text-light">{explanation}</p>
-            <span className="mt-2 text-secondary">{data.date}</span>
+            <span className="mt-2 text-light">{data.date}</span>
             {language === "pt" && !translation && (
                 <p className="text-warning mt-2">Falha ao traduzir. Exibindo original em inglês.</p>
             )}

@@ -8,13 +8,13 @@ export default function LangToggle({language, onChange}: Props) {
         <div className="d-flex justify-content-center align-items-center gap-2 mb-4">
             <button
                 onClick={() => onChange("pt")}
-                className={`btn ${language === "pt" ? "btn-primary" : "btn-secondary"}`}
+                className={`btn ${language === "pt" ? "btn-light" : "btn-outline-light"}`}
             >
                 Português
             </button>
             <button
                 onClick={() => onChange("en")}
-                className={`btn ${language === "en" ? "btn-primary" : "btn-secondary"}`}
+                className={`btn ${language === "en" ? "btn-light" : "btn-outline-light"}`}
             >
                 English
             </button>

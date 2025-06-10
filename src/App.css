@@ -1,0 +1,29 @@
+/* Simple star loader animation */
+.star-loader {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  color: var(--light-gray);
+  animation: star-spin 1.2s linear infinite;
+}
+
+.star-loader::before,
+.star-loader::after {
+  content: "\2605"; /* star character */
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2rem;
+}
+
+.star-loader::after {
+  color: var(--dark-gray);
+  transform: scale(0.5);
+}
+
+@keyframes star-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -4,19 +4,17 @@
 
 export default function Navbar({ onDownload }: Props) {
     return (
-        <nav className="navbar navbar-dark bg-dark fixed-top shadow">
-            <div className="container-fluid d-flex align-items-center">
-                <a href="/" className="navbar-brand me-4">
-                    UCB APOD
-                </a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-black bg-opacity-75 fixed-top shadow-sm border-bottom border-secondary">
+            <div className="container-fluid">
+                <a href="/" className="navbar-brand">UCB APOD</a>
                 <div className="ms-auto d-flex align-items-center gap-3">
-                    <a href="/" className="text-white text-decoration-none">Início</a>
-                    <button onClick={onDownload} className="btn btn-primary">
-                        Baixar a Imagem
+                    <a href="/" className="text-light text-decoration-none">Início</a>
+                    <a href="#about" className="text-light text-decoration-none">Sobre a Imagem</a>
+                    <a href="#ucb" className="text-light text-decoration-none">Sobre a UCB</a>
+                    <a href="#contact" className="text-light text-decoration-none">Contato</a>
+                    <button onClick={onDownload} className="btn btn-outline-light">
+                        Baixar Imagem
                     </button>
-                    <a href="#about" className="text-white text-decoration-none">Sobre a Imagem</a>
-                    <a href="#ucb" className="text-white text-decoration-none">Sobre a UCB</a>
-                    <a href="#contact" className="text-white text-decoration-none">Contato</a>
                 </div>
             </div>
         </nav>

@@ -1,11 +1,13 @@
 :root {
+  --light-gray: #ced4da;
+  --dark-gray: #343a40;
+  --black: #000;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--light-gray);
+  background-color: var(--black);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,8 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-gradient-custom {
-  background: linear-gradient(to bottom right, #0f172a, #312e81);
+.bg-universe {
+  background:
+    radial-gradient(#ffffff33 1px, transparent 1px),
+    radial-gradient(#ffffff22 1px, transparent 1px),
+    linear-gradient(to bottom, var(--black), var(--dark-gray));
+  background-size: 2px 2px, 3px 3px, 100% 100%;
+  background-position: 0 0, 1px 1px, 0 0;
 }
 
 a {

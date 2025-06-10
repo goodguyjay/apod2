@@ -55,7 +55,7 @@ export default function ThreeJSViewer() {
     return (
         <div className="d-flex flex-column align-items-center my-4">
             <div ref={mountRef} className="rounded shadow border border-primary" />
-            <span className="text-secondary small mt-2">Demo 3D: Cubo (Three.js)</span>
+            <span className="text-light small mt-2">Demo 3D: Cubo (Three.js)</span>
         </div>
     )
 }

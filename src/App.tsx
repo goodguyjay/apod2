@@ -27,16 +27,14 @@ function App() {
     }
 
     return (
-        <div className="bg-gradient-custom min-vh-100 pt-5">
-            <Navbar onDownload={handleDownload}/>
-            <h1 className="text-center text-white fw-bold display-4 pt-5 mb-4">
-                Portal APOD UCB
-            </h1>
-            <div className="d-flex flex-column align-items-center">
-                <SearchBar onDateChange={setSelectedDate}/>
-                <LangToggle language={language} onChange={setLanguage}/>
-                <ImageViewer date={selectedDate} language={language}/>
-                <ThreeJSViewer/>
+        <div className="bg-universe text-light min-vh-100 min-vw-100 pt-5 d-flex flex-column">
+            <Navbar onDownload={handleDownload} />
+            <h1 className="text-center fw-bold display-4 pt-5 mb-4">Portal APOD UCB</h1>
+            <div className="flex-grow-1 d-flex flex-column align-items-center w-100">
+                <SearchBar onDateChange={setSelectedDate} />
+                <LangToggle language={language} onChange={setLanguage} />
+                <ImageViewer date={selectedDate} language={language} />
+                <ThreeJSViewer />
             </div>
         </div>
     )

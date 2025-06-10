@@ -39,7 +39,7 @@ export default function ImageViewer({date, language}: Props) {
                     />
             )}
             <p className="text-light">{explanation}</p>
-            <span className="mt-2 text-secondary">{data.date}</span>
+            <span className="mt-2 text-light">{data.date}</span>
             {language === "pt" && !translation && (
                 <p className="text-warning mt-2">Falha ao traduzir. Exibindo original em inglês.</p>
             )}

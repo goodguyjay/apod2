@@ -4,21 +4,20 @@ import {useState} from "react";
 import SearchBar from "./components/SearchBar.tsx";
 import LangToggle from "./components/LangToggle.tsx";
 import ThreeJSViewer from "./components/ThreeJSViewer.tsx";
-import type {ApodData} from "./types/apod.ts";
+import {fetchApod} from "./services/apodService.ts";
 import Navbar from "./components/Navbar.tsx";
 
 function App() {
     const [selectedDate, setSelectedDate] = useState<string | undefined>(undefined);
     const [language, setLanguage] = useState<"en" | "pt">("pt");
-    const [apodData, setApodData] = useState<ApodData | null>(null);
+    async function handleDownload() {
+        const data = await fetchApod(selectedDate);
+        if (!data || !data.url) return;
 
-    function handleDownload() {
-        if (!apodData || !apodData.url) return;
-
-        if (apodData.media_type === "image") {
+        if (data.media_type === "image") {
             const link = document.createElement("a");
-            link.href = apodData.hdurl || apodData.url;
-            link.download = apodData.title?.replace(/[^a-z0-9]/gi, "_") || "apod.jpg";
+            link.href = data.hdurl || data.url;
+            link.download = data.title?.replace(/[^a-z0-9]/gi, "_") || "apod.jpg";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -28,16 +27,14 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 to-indigo-950 pt-24">
-            <Navbar onDownload={handleDownload}/>
-            <h1 className="text-4xl font-bold text-white text-center pt-8 mb-6">
-                Portal APOD UCB
-            </h1>
-            <div className="flex flex-col items-center">
-                <SearchBar onDateChange={setSelectedDate}/>
-                <LangToggle language={language} onChange={setLanguage}/>
-                <ImageViewer date={selectedDate} language={language}/>
-                <ThreeJSViewer/>
+        <div className="bg-universe text-light min-vh-100 pt-5 d-flex flex-column">
+            <Navbar onDownload={handleDownload} />
+            <h1 className="text-center fw-bold display-4 pt-5 mb-4">Portal APOD UCB</h1>
+            <div className="container-fluid flex-grow-1 d-flex flex-column align-items-center w-100">
+                <SearchBar onDateChange={setSelectedDate} />
+                <LangToggle language={language} onChange={setLanguage} />
+                <ImageViewer date={selectedDate} language={language} />
+                <ThreeJSViewer />
             </div>
         </div>
     )

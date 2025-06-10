@@ -8,34 +8,40 @@ type Props = {
 export default function ImageViewer({date, language}: Props) {
     const {data, translation, loading, error} = useApodWithTranslation(date);
 
-    if (loading) return <div className="text-gray-200 text-xl">Carregando...</div>;
-    if (error) return <div className="text-red-500">{error}</div>;
+    if (loading)
+        return (
+            <div className="my-5 d-flex justify-content-center">
+                <span className="star-loader" />
+            </div>
+        );
+    if (error) return <div className="text-danger">{error}</div>;
     if (!data) return null;
 
     const title = language === "pt" && translation?.title ? translation.title : data.title;
     const explanation = language === "pt" && translation?.explanation ? translation.explanation : data.explanation;
 
     return (
-        <div className="flex flex-col items-center p-4 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
+        <div className="d-flex flex-column align-items-center p-4 mx-auto" style={{maxWidth: '40rem'}}>
+            <h2 className="h4 text-white fw-bold mb-2">{title}</h2>
             {data.media_type === "image" ? (
                 <img
                     src={data.hdurl || data.url}
                     alt={title}
-                    className="rounded shadow-lg w-full max-h-96 object-cover mb-4"
+                    className="img-fluid rounded shadow mb-4"
+                    style={{maxHeight: '24rem', objectFit: 'cover'}}
                 />
             ) : (
                 <iframe
                     src={data.url}
                     title={title}
                     allowFullScreen
-                    className="w-full h-96 mb-4 rounded"
-                />
+                    className="w-100 mb-4 rounded"
+                    />
             )}
-            <p className="text-gray-200">{explanation}</p>
-            <span className="mt-2 text-gray-400">{data.date}</span>
+            <p className="text-light">{explanation}</p>
+            <span className="mt-2 text-secondary">{data.date}</span>
             {language === "pt" && !translation && (
-                <p className="text-yellow-400-mt-2">Falha ao traduzir. Exibindo original em inglês.</p>
+                <p className="text-warning mt-2">Falha ao traduzir. Exibindo original em inglês.</p>
             )}
         </div>
     );

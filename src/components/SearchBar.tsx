@@ -13,19 +13,15 @@ export default function SearchBar({onDateChange}: Props) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex items-center gap-2 mb-4 justify-center">
+        <form onSubmit={handleSubmit} className="d-flex align-items-center justify-content-center gap-2 mb-4">
             <input
                 type="date"
                 value={date}
-                max={new Date().toISOString().split("T")[0]} // impede datas futuras
+                max={new Date().toISOString().split("T")[0]}
                 onChange={e => setDate(e.target.value)}
-                className="p-2 rounded border text-black"
+                className="form-control"
             />
-            <button
-                type="submit"
-                className="px-4 py-2 rounded bg-indigo-700 text-white font-bold hover:bg-indigo-800"
-                disabled={!date}
-            >
+            <button type="submit" className="btn btn-primary" disabled={!date}>
                 Buscar
             </button>
         </form>

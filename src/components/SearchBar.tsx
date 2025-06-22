@@ -13,7 +13,7 @@ export default function SearchBar({onDateChange}: Props) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="d-flex align-items-center justify-content-center gap-2 mb-4">
+        <form onSubmit={handleSubmit} className="d-flex align-items-center justify-content-center gap-2 mb-4 w-25">
             <input
                 type="date"
                 value={date}
@@ -26,4 +26,4 @@ export default function SearchBar({onDateChange}: Props) {
             </button>
         </form>
     )
-}
+}   

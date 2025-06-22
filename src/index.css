@@ -15,15 +15,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-universe {
-  background:
-    radial-gradient(#ffffff33 1px, transparent 1px),
-    radial-gradient(#ffffff22 1px, transparent 1px),
-    linear-gradient(to bottom, var(--black), var(--dark-gray));
-  background-size: 2px 2px, 3px 3px, 100% 100%;
-  background-position: 0 0, 1px 1px, 0 0;
-}
-
 a {
   font-weight: 500;
   color: #646cff;

@@ -1,29 +1,25 @@
 /* Simple star loader animation */
-.star-loader {
-  position: relative;
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  color: var(--light-gray);
-  animation: star-spin 1.2s linear infinite;
+
+.glow-ring-loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(0, 255, 255, 0.2);
+  border-top: 6px solid #0ff;
+  border-radius: 50%;
+  animation: spin-glow 1s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
-.star-loader::before,
-.star-loader::after {
-  content: "\2605"; /* star character */
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 2rem;
-}
-
-.star-loader::after {
-  color: var(--dark-gray);
-  transform: scale(0.5);
-}
-
-@keyframes star-spin {
-  to {
+@keyframes spin-glow {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 0.6);
+  }
+  100% {
     transform: rotate(360deg);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.4);
   }
 }
